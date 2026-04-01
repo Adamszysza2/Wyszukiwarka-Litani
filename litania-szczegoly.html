@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Szczegóły Litanii</title>
+    <link rel="stylesheet" href="./litania1.css" />
+    "litania1.css" />
+  </head>
+  <body>
+    <p id="litania-content">
+      <!-- Treść litanii zostanie wstawiona tutaj przez JavaScript -->
+    </p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Pobierz parametr 'name' z adresu URL
+        const params = new URLSearchParams(window.location.search);
+        const litaniaName = params.get("name");
+
+        const contentDiv = document.getElementById("litania-content");
+
+        if (!litaniaName) {
+          contentDiv.innerHTML =
+            "<h1>Nie znaleziono nazwy litanii w adresie URL.</h1>";
+          return;
+        }
+
+        // 2. Wczytaj plik JSON
+        fetch("litanie.json")
+          .then((res) => res.json())
+          .then((data) => {
+            // 3. Znajdź litanię o pasującej nazwie
+            const litania = data.find((item) => item.name === litaniaName);
+
+            // 4. Wyświetl treść litanii lub błąd
+            if (litania) {
+              contentDiv.innerHTML = `
+            
+                <h1 class = "ramka" style = "text-align: center;">${litania.name}</h1>
+                <br>
+                
+                <div class = "ramka">  
+                      <p>${litania.content.replace(/\n/g, "<br>")}</p>
+                </div>
+                <br>
+                <a href="litanie.html">Powrót do wyszukiwarki</a>`;
+            } else {
+              contentDiv.innerHTML = `<h1>Nie znaleziono litanii o nazwie: ${litaniaName}</h1>`;
+            }
+          })
+          .catch((error) => {
+            console.error("Błąd ładowania danych:", error);
+            S;
+            contentDiv.innerHTML =
+              "<h1>Wystąpił błąd podczas ładowania danych litanii.</h1>";
+          });
+      });
+    </script>
+  </body>
+</html>

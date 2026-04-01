@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Wyszukiwarka Litani</title>
+    <link rel="stylesheet" href="./litania.css" />
+  </head>
+
+  <body>
+    <div>
+      <h1>Witam na Wyszukiwarce wszystkich Litani na świecie.</h1>
+      <h2>Po niżej wpisz imie Świetego lub nazwe danej Litanie.</h2>
+    </div>
+    <div class="search-group">
+      <input
+        type="text"
+        id="search"
+        placeholder="Szukaj..."
+        autocomplete="off"
+        onkeyup="search()"
+      />
+      <ul id="results"></ul>
+    </div>
+
+    <script>
+      let litanie = [];
+
+      fetch("litanie.json")
+        .then((res) => res.json())
+        .then((data) => {
+          litanie = data;
+          console.log("Pobrano litanie:", litanie); // Log dla sprawdzenia czy dane są
+        })
+        .catch((error) => {
+          console.error(
+            "Błąd pobierania danych (sprawdź czy używasz serwera lokalnego):",
+            error,
+          );
+        });
+
+      function search() {
+        const query = document.getElementById("search").value.toLowerCase();
+        const results = document.getElementById("results");
+
+        results.innerHTML = "";
+
+        const filtered = litanie.filter((item) =>
+          item.name.toLowerCase().includes(query),
+        );
+
+        filtered.forEach((item) => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.textContent = item.name;
+          // Tworzymy link do podstrony, przekazując nazwę litanii jako parametr URL
+          link.href = `litania-szczegoly.html?name=${encodeURIComponent(item.name)}`;
+          li.appendChild(link);
+          results.appendChild(li);
+        });
+      }
+    </script>
+  </body>
+</html>
