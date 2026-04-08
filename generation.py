@@ -5,16 +5,12 @@ with open(r"C:/Users/adams/OneDrive/Programowane/javaskirpt/html/Strona z Litani
 przetworzone_linie = []
 for linia in surowe_linie:
     # Usuwamy niechciane znaki: [, ], ' oraz zbędne białe znaki
-    oczyszczona = linia.replace("[", "").replace("]", "").replace("'", "").split
+    oczyszczona = linia.replace("[", "").replace("]", "").replace("'", "").strip()
     
-    # Jeśli w linii jest konkretna fraza, dopisujemy odpowiedź
-    if "Boskie Dzieciątko" in oczyszczona:
-        oczyszczona += " - zmiłuj się nad nami"
-    else:
-   
-    
-        if oczyszczona: # Dodajemy do wyniku tylko niepuste linie
-            przetworzone_linie.append(oczyszczona)
+    if oczyszczona: # Dodajemy do wyniku tylko niepuste linie
+        if "Boskie Dzieciątko" in oczyszczona and "zmiłuj się nad nami" not in oczyszczona:
+            oczyszczona += " - zmiłuj się nad nami"
+        przetworzone_linie.append(oczyszczona)
 
 for wynik in przetworzone_linie:
     print(wynik)

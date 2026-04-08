@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./litania1.css" />
   </head>
   <body>
-    <p id="litania-content">
+    <div id="litania-content">
       <!-- Treść litanii zostanie wstawiona tutaj przez JavaScript -->
-    </p>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -44,14 +44,18 @@
                 <br>
                 <a href="index.html">Powrót do wyszukiwarki</a>`;
             } else {
-              contentDiv.innerHTML = `<h1>Nie znaleziono litanii o nazwie: ${litaniaName}</h1>`;
+              contentDiv.innerHTML = `
+                <h1>Nie znaleziono litanii o nazwie: ${litaniaName}</h1>
+                <br>
+                <a href="index.html">Powrót do wyszukiwarki</a>`;
             }
           })
           .catch((error) => {
             console.error("Błąd ładowania danych:", error);
-            S;
-            contentDiv.innerHTML =
-              "<h1>Wystąpił błąd podczas ładowania danych litanii.</h1>";
+            contentDiv.innerHTML = `
+              <h1>Wystąpił błąd podczas ładowania danych litanii.</h1>
+              <br>
+              <a href="index.html">Powrót do wyszukiwarki</a>`;
           });
       });
     </script>
