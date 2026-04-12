@@ -2,6 +2,7 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Szczegóły Litanii</title>
     <link rel="stylesheet" href="./litania1.css" />
   </head>
@@ -42,7 +43,7 @@
                       <p>${litania.content.replace(/\n/g, "<br>")}</p>
                 </div>
                 <br>
-                <a href="index.html">Powrót do wyszukiwarki</a>`;
+                <a class="comeback" href="index.html">Powrót do wyszukiwarki</a>`;
             } else {
               contentDiv.innerHTML = `
                 <h1>Nie znaleziono litanii o nazwie: ${litaniaName}</h1>

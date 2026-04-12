@@ -67,13 +67,3 @@ a {
   color: red;
   text-decoration: none;
 }
-.search-group {
-  width: 40px;
-  height: 30px;
-}
-@media (max-width: 768px) {
-  #search-group {
-    width: 30px;
-    height: 25px;
-  }
-}
