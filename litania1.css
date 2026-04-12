@@ -59,7 +59,7 @@ a {
   width: 90%;
   align-items: center;
 }
-#comeback {
+.comeback {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
   display: inline-block;
@@ -67,7 +67,7 @@ a {
   color: red;
   text-decoration: none;
 }
-#search-group {
+.search-group {
   width: 40px;
   height: 30px;
 }
